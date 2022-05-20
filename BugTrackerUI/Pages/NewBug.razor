@@ -25,9 +25,9 @@
     //public property of type NavigationManager called NavService. Add the [Inject] 
     public NavigationManager NavService { get; set; }
 
-    protected void HandleValidSubmit(Bug newBug)
+    protected void HandleValidSubmit(Bug AddBug)
     {
-        BugService.AddBug(newBug);
+        BugService.AddBug(AddBug);
         NavService.NavigateTo("");
     }
 }
