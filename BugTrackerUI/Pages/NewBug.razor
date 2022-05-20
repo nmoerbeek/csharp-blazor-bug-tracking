@@ -1,11 +1,11 @@
 ﻿@page "/new-bug"
 
 <h3>NewBug "Add New Bug"</h3>
-<EditForm Model="AddBug" >
+<EditForm OnValidSubmit="HandleValidSubmit" Model="AddBug" >
 <InputText @bind-Value="@AddBug.Title" placeholder="Enter Title" />
 <InputText @bind-Value="@AddBug.Description" placeholder="Enter Description" />
 <InputNumber @bind-Value="@AddBug.Priority" placeholder="Enter Priority" />
-<button type="submit" OnValidSubmit="HandleValidSubmit">Add Bug</button>
+<button type="submit" >Add Bug</button>
 </EditForm> 
 
 @code {
@@ -25,7 +25,7 @@
     //public property of type NavigationManager called NavService. Add the [Inject] 
     public NavigationManager NavService { get; set; }
 
-    protected void HandleValidSubmit(Bug AddBug)
+    protected void HandleValidSubmit()
     {
         BugService.AddBug(AddBug);
         NavService.NavigateTo("");
