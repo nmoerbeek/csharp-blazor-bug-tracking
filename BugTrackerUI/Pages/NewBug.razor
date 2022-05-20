@@ -1,7 +1,21 @@
 ﻿@page "/new-bug"
 
-<h3>NewBug</h3>
+<h3>NewBug "Add New Bug"</h3>
+<EditForm Model="AddBug">
+<InputText @bind-Value="@AddBug.Title" placeholder="Enter Title" />
+<InputText @bind-Value="@AddBug.Description" placeholder="Enter Description" />
+<InputNumber @bind-Value="@AddBug.Priority" placeholder="Enter Priority" />
+</EditForm> 
 
 @code {
+    // Inside the EditForm component, add an InputText component with the @bind-value attribute set to "@AddBug.Title", and the placeholder attribute set to "Enter Title".
 
+    //Below the new Title InputText component, add another InputText with the @bind-value attribute set to "@AddBug.Description", and the placeholder attribute set to "Enter Description".
+
+    //Below the new Description InputText component, add an InputNumber component with the @bind-value attribute set to "@AddBug.Priority", and the placeholder attribute set to "Enter Priority".
+
+    //Directly above the @code block, add a new EditForm component to the file, with the Model attribute set to a value of "AddBug".
+
+    //Inside the @code block, add a new public property of type Bug called AddBug, and assign a new instance of Bug to it.
+    public Bug AddBug { get; set; } = new Bug();
 }
