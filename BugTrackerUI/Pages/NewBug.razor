@@ -1,11 +1,11 @@
 ﻿@page "/new-bug"
 
 <h3>NewBug "Add New Bug"</h3>
-<EditForm Model="AddBug">
+<EditForm Model="AddBug" >
 <InputText @bind-Value="@AddBug.Title" placeholder="Enter Title" />
 <InputText @bind-Value="@AddBug.Description" placeholder="Enter Description" />
 <InputNumber @bind-Value="@AddBug.Priority" placeholder="Enter Priority" />
-<button type="submit">Add Bug</button>
+<button type="submit" OnValidSubmit="HandleValidSubmit">Add Bug</button>
 </EditForm> 
 
 @code {
@@ -19,4 +19,14 @@
 
     //Inside the @code block, add a new public property of type Bug called AddBug, and assign a new instance of Bug to it.
     public Bug AddBug { get; set; } = new Bug();
+    [Inject]
+    public IBugService BugService { get; set; }
+    [Inject]
+    //public property of type NavigationManager called NavService. Add the [Inject] 
+    public NavigationManager NavService { get; set; }
+
+    protected void HandleValidSubmit(Bug AddBug)
+    {
+        NavService.NavigateTo("");
+    }
 }
